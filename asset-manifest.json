@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/sim-examen-final-2021/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/sim-examen-final-2021/static/js/main.eab37276.chunk.js",
+    "main.js.map": "/sim-examen-final-2021/static/js/main.eab37276.chunk.js.map",
+    "runtime-main.js": "/sim-examen-final-2021/static/js/runtime-main.47472cac.js",
+    "runtime-main.js.map": "/sim-examen-final-2021/static/js/runtime-main.47472cac.js.map",
+    "static/js/2.9c70c0d7.chunk.js": "/sim-examen-final-2021/static/js/2.9c70c0d7.chunk.js",
+    "static/js/2.9c70c0d7.chunk.js.map": "/sim-examen-final-2021/static/js/2.9c70c0d7.chunk.js.map",
+    "static/js/3.dfcfd731.chunk.js": "/sim-examen-final-2021/static/js/3.dfcfd731.chunk.js",
+    "static/js/3.dfcfd731.chunk.js.map": "/sim-examen-final-2021/static/js/3.dfcfd731.chunk.js.map",
+    "index.html": "/sim-examen-final-2021/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/sim-examen-final-2021/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.9c70c0d7.chunk.js.LICENSE.txt": "/sim-examen-final-2021/static/js/2.9c70c0d7.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.47472cac.js",
+    "static/js/2.9c70c0d7.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.eab37276.chunk.js"
+  ]
+}
