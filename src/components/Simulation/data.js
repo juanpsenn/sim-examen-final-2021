@@ -7,7 +7,7 @@ export const header = [
     "Perdidas",
     "AVG Desperdicio",
     "AVG Perdidas",
-    "RDN Oc. Policia",
+    "Pr. Oc. Policia",
     "RND Atrapado",
     "Es Atrapado",
     "Utilidad",
