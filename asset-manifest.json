@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/sim-examen-final-2021/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/sim-examen-final-2021/static/js/main.d7fdc849.chunk.js",
-    "main.js.map": "/sim-examen-final-2021/static/js/main.d7fdc849.chunk.js.map",
+    "main.js": "/sim-examen-final-2021/static/js/main.36865f53.chunk.js",
+    "main.js.map": "/sim-examen-final-2021/static/js/main.36865f53.chunk.js.map",
     "runtime-main.js": "/sim-examen-final-2021/static/js/runtime-main.47472cac.js",
     "runtime-main.js.map": "/sim-examen-final-2021/static/js/runtime-main.47472cac.js.map",
     "static/js/2.e14fd32c.chunk.js": "/sim-examen-final-2021/static/js/2.e14fd32c.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.47472cac.js",
     "static/js/2.e14fd32c.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.d7fdc849.chunk.js"
+    "static/js/main.36865f53.chunk.js"
   ]
 }
