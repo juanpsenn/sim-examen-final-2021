@@ -54,7 +54,7 @@ export function getSimulation({initPrice, initCost, initPenalty, initStock, simu
     let rows = [[1, randDemand, demand, dailyStock, dailyWaste, dailySalesLost, dailyWasteAcumulator, dailySalesLostAcumulator,
         randPoliceOcurrance, randPolice, isCaught ? 'SI' : 'NO', dailyUtility, dailyUtilityAcumulator, dailyUtilityWithPermission, dailyUtilityWithPermissionAcumulator]]
 
-    for (let i = 2; i <= simulationDays - 1; i++) {
+    for (let i = 2; i <= simulationDays; i++) {
 
         randDemand = uniform(0, 1);
         demand = getDemand(randDemand);

@@ -4,6 +4,7 @@ import {getSimulation} from "../utils/events";
 const useSimulation = () => {
     const [rows, setRows] = useState([]);
     const [results, setResults] = useState([]);
+
     const simulate = ({unitPrice, unitCost, penaltyAmount, dailyStock, simulationDays}) => {
         setRows(getSimulation({
             initPrice: unitPrice,
@@ -11,8 +12,9 @@ const useSimulation = () => {
             initPenalty: penaltyAmount,
             initStock: dailyStock,
             simulationDays
-        }))
+        }));
     }
+
     useEffect(() => {
         if (rows.length > 0) {
             const last = rows.slice(-1).pop();

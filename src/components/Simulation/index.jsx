@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
@@ -6,7 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
 import {makeStyles} from "@material-ui/core/styles";
 import {header} from "./data";
-import {Paper, TableContainer, TablePagination} from "@material-ui/core";
+import {Paper, TableContainer, TablePagination, Typography} from "@material-ui/core";
 
 const useStyles = makeStyles({
     table: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 });
 
 
-const Simulation = ({rows}) => {
+const Simulation = ({rows, title, pagination, reset}) => {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -30,6 +30,10 @@ const Simulation = ({rows}) => {
 
     const classes = useStyles();
 
+    useEffect(() => {
+        reset && setPage(0);
+    }, [reset]);
+
     return (
         <Paper>
             <TableContainer className={classes.table}>
@@ -38,6 +42,12 @@ const Simulation = ({rows}) => {
                     size={"small"}
                 >
                     <TableHead>
+                        {
+                            title &&
+                            <Typography variant="h6" id="tableTitle" align={"right"}>
+                                {title}
+                            </Typography>
+                        }
                         <TableRow>
                             {header.map((c, index) =>
                                 <TableCell key={index}>
@@ -60,15 +70,18 @@ const Simulation = ({rows}) => {
                     </TableBody>
                 </Table>
             </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[10, 25, 100]}
-                component="div"
-                count={rows.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onChangePage={handleChangePage}
-                onChangeRowsPerPage={handleChangeRowsPerPage}
-            />
+            {
+                pagination &&
+                <TablePagination
+                    rowsPerPageOptions={[10, 25, 100]}
+                    component="div"
+                    count={rows.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onChangePage={handleChangePage}
+                    onChangeRowsPerPage={handleChangeRowsPerPage}
+                />
+            }
         </Paper>
     );
 };

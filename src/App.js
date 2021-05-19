@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Simulation from "./components/Simulation";
 import {Box, Grid} from "@material-ui/core";
 import Form from "./components/Form";
@@ -8,6 +8,16 @@ import Chart from "./components/Chart";
 
 export default function App() {
     const {rows, results, simulate} = useSimulation();
+    const [reset, setReset] = useState(false);
+
+    const handleClickSimulate = (data) => {
+        setReset(true);
+        simulate(data);
+    };
+
+    useEffect(() => {
+        reset && setReset(false);
+    }, [reset])
 
     return (
         <>
@@ -17,7 +27,7 @@ export default function App() {
                 <Grid item xs={12} lg={2}>
                     <Box my={2}>
                         <Form
-                            handleSubmit={simulate}
+                            handleSubmit={handleClickSimulate}
                         />
                     </Box>
                 </Grid>
@@ -56,9 +66,16 @@ export default function App() {
                 <Grid item xs={12}>
                     <Box my={3} mx={"auto"}>
                         <Simulation
-                            rows={rows}
+                            title={"Ultima fila"}
+                            rows={rows.slice(-1)}
                         />
-                    </Box>
+                    </Box> <Box my={3} mx={"auto"}>
+                    <Simulation
+                        rows={rows}
+                        reset={reset}
+                        pagination
+                    />
+                </Box>
                 </Grid>
             </Grid>
         </>
