@@ -1,0 +1,30 @@
+En el exámen final cada alumno deberá traer un trabajo práctico programado que se le asignó en el momento en que realizó la inscripción en exámen de la materia.
+
+Dicho trabajo práctico debe cumplir todos los requisitos descriptos en la Modalidad Académica.
+
+Será evaluado en el exámen final siendo requisito mínimo para su aprobación el funcionamiento del software propuesto.
+
+En forma obligatoria debe incluir la identificación de objetos, eventos, atributos (nombre, estado y resto de atributos necesarios, cada uno con sus valores posibles) y características de colas así como todas las variables o parámetros en caso de Simulación Montecarlo o Contínua.
+
+El Vector de Estado deberá contener:
+
+- hora simulada
+- nombre del evento simulado
+- próximos eventos a ejecutarse
+- Objetos considerados en la simulación,
+- Cada uno con sus atributos de los objetos: nombre, por ser estático podrá estar en el encabezado - estado - otros atributos necesarios
+- Variables auxiliares (acumuladores, contadores, etc. )
+Todos los acumuladores deben figurar como columnas.
+
+Resolución en máquina:
+
+Se debe trabajar en memoria con 2 filas.
+
+Se deberá simular X tiempo (X será un parámetro solicitado al inicio de la simulación o al iniciar la ejecucion del software) generando N cantidad de filas en total.
+
+Se mostrará en el vector de estado i  iteraciones a partir de una hora  j  o alguna relación equivalente en caso de Montecarlo o simulacion continua: 
+
+- i  y  j  deben ser ingresadas por parámetro antes de iniciar la simulación
+- podrá considerarse un valor  i <= 500.
+- j debera ser un valor mayor o igual al inicio de la simulación y menor o igual al momento de tiempo asociado al valor X ingresado anteriomente para finalizar.
+- Debe mostrarse además el ultimo vector (vector de fin de simulación). 
