@@ -5,9 +5,10 @@ const useSimulation = () => {
     const [rows, setRows] = useState([]);
     const [results, setResults] = useState([]);
     const [lastRow, setLastRow] = useState([]);
+    const [tail, setTail] = useState([]);
 
     const simulate = ({unitPrice, unitCost, penaltyAmount, dailyStock, simulationDays, fromDay, toDay}) => {
-        const {_rows, _lastRow} = getSimulation({
+        const {_rows, _lastRow, _tail} = getSimulation({
             initPrice: unitPrice,
             initCost: unitCost,
             initPenalty: penaltyAmount,
@@ -17,7 +18,8 @@ const useSimulation = () => {
             toDay
         })
         setRows(_rows);
-        setLastRow(_lastRow)
+        setLastRow(_lastRow);
+        setTail(_tail);
     }
 
     useEffect(() => {
@@ -47,6 +49,7 @@ const useSimulation = () => {
         rows,
         results,
         lastRow,
+        tail,
         simulate
     }
 };

@@ -7,7 +7,7 @@ import Results from "./components/Result";
 import Chart from "./components/Chart";
 
 export default function App() {
-    const {rows, results, lastRow, simulate} = useSimulation();
+    const {rows, results, lastRow, tail, simulate} = useSimulation();
     const [reset, setReset] = useState(false);
 
     const handleClickSimulate = (data) => {
@@ -59,7 +59,7 @@ export default function App() {
                     lg={6}
                     alignItems={"center"}
                 >
-                    {rows.length > 25 && <Chart rows={rows.slice(-25)}/>}
+                    {tail.length > 25 && <Chart rows={tail}/>}
                 </Grid>
             </Grid>
             <Grid container>
@@ -73,6 +73,7 @@ export default function App() {
                     <Simulation
                         rows={rows}
                         reset={reset}
+                        title={"Simulacion completa"}
                         pagination
                     />
                 </Box>
