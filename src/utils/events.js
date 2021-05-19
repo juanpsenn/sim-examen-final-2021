@@ -43,7 +43,7 @@ export function getSimulation({initPrice, initCost, initPenalty, initStock, simu
     let randPoliceOcurrance = uniform(0.2, 0.4)
     let randPolice = uniform(0, 1)
     let isCaught = randPolice < randPoliceOcurrance;
-    let hasPermission = true;
+    let hasPermission = false;
 
     let dailyUtility = getDailyUtility(demand, unitPrice, dailyStock, unitCost, isCaught, penaltyAmount);
     let dailyUtilityAcumulator = dailyUtility;
@@ -52,8 +52,9 @@ export function getSimulation({initPrice, initCost, initPenalty, initStock, simu
     let dailyUtilityWithPermissionAcumulator = dailyUtilityWithPermission;
 
     let rows = (1 >= fromDay && 1 <= toDay) ? [[1, randDemand, demand, dailyStock, dailyWaste, dailySalesLost, dailyWasteAcumulator, dailySalesLostAcumulator,
-        randPoliceOcurrance, randPolice, isCaught ? 'SI' : 'NO', dailyUtility, dailyUtilityAcumulator, dailyUtilityWithPermission, dailyUtilityWithPermissionAcumulator]] : []
+        randPoliceOcurrance, randPolice, isCaught ? `SI (-${penaltyAmount})` : 'NO', dailyUtility, dailyUtilityAcumulator, dailyUtilityWithPermission, dailyUtilityWithPermissionAcumulator]] : []
     let lastRow = rows.length > 0 ? rows : [];
+    let tail = [];
 
     for (let i = 2; i <= simulationDays; i++) {
 
@@ -82,12 +83,15 @@ export function getSimulation({initPrice, initCost, initPenalty, initStock, simu
         dupAvg = Number(toFixed(dailyUtilityWithPermissionAcumulator / i, 4))
 
         lastRow = [i, randDemand, demand, dailyStock, dailyWaste, dailySalesLost, dwAvg, dslAvg,
-            randPoliceOcurrance, randPolice, isCaught ? 'SI' : 'NO', dailyUtility, duAvg, dailyUtilityWithPermission, dupAvg]
+            randPoliceOcurrance, randPolice, isCaught ? `SI (-${penaltyAmount})` : 'NO', dailyUtility, duAvg, dailyUtilityWithPermission, dupAvg]
 
         if (i >= fromDay && i <= toDay) {
             rows.push([...lastRow])
         }
 
+        if (simulationDays >= 25 && simulationDays - 25 <= i) {
+            tail.push([...lastRow])
+        }
     }
-    return {_rows: rows, _lastRow: [lastRow]};
+    return {_rows: rows, _lastRow: [lastRow], _tail: tail};
 }
