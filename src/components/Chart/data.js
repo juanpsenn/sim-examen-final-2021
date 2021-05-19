@@ -13,7 +13,7 @@ export const data = ({rows}) => ({
         },
         {
             label: 'Utilidad',
-            data: rows.map(r => r[11]),
+            data: rows.map(r => r[12]),
             borderColor: '#e63946',
         },
         {
