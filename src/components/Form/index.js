@@ -32,7 +32,7 @@ const validationSchema = yup.object({
         .positive('Ingrese un numero positivo')
         .integer('Ingrese un numero entero')
         .required('Ingrese un numero')
-        .max(1000000, 'Debe ser <= 1.000.000'),
+        .max(10000000, 'Debe ser <= 1.000.000'),
     fromDay: yup
         .number('Ingrese un numero')
         .typeError('Debe ingresar un numero')
@@ -40,7 +40,7 @@ const validationSchema = yup.object({
         .integer('Ingrese un numero entero')
         .required('Ingrese un numero')
         .when('toDay', (toDay, schema) => {
-            return schema.max(toDay >= 500 ? 500 : toDay, 'Debe ser [<= Hasta] o [<= 500]')
+            return schema.max(toDay, 'Debe ser [<= Hasta]')
         }),
     toDay: yup
         .number('Ingrese un numero')
@@ -178,7 +178,7 @@ const Form = ({handleSubmit}) => {
                             helperText={formik.touched.simulationDays && formik.errors.simulationDays}
                             inputProps={
                                 {
-                                    maxLength: 7
+                                    maxLength: 8
                                 }
                             }
                             fullWidth
