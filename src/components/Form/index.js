@@ -164,6 +164,7 @@ const Form = ({handleSubmit}) => {
                                     maxLength: 7
                                 }
                             }
+                            fullWidth
                         />
                     </Grid>
                     <Grid item xs={12} lg={12}>
