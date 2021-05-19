@@ -19,7 +19,7 @@ function getDailyUtilityWithPermission(demand, unitPrice, dailyStock, unitCost, 
     return (dailySales * unitPrice) - (dailyStock * unitCost) - (hasPermission ? 0 : permissionCost);
 }
 
-export function getSimulation({initPrice, initCost, initPenalty, initStock, simulationDays}) {
+export function getSimulation({initPrice, initCost, initPenalty, initStock, simulationDays, fromDay, toDay}) {
     let dslAvg;
     let dwAvg;
     let duAvg;
@@ -51,8 +51,9 @@ export function getSimulation({initPrice, initCost, initPenalty, initStock, simu
     let dailyUtilityWithPermission = getDailyUtilityWithPermission(demand, unitPrice, dailyStock, unitCost, hasPermission, permissionCost);
     let dailyUtilityWithPermissionAcumulator = dailyUtilityWithPermission;
 
-    let rows = [[1, randDemand, demand, dailyStock, dailyWaste, dailySalesLost, dailyWasteAcumulator, dailySalesLostAcumulator,
-        randPoliceOcurrance, randPolice, isCaught ? 'SI' : 'NO', dailyUtility, dailyUtilityAcumulator, dailyUtilityWithPermission, dailyUtilityWithPermissionAcumulator]]
+    let rows = (1 >= fromDay && 1 <= toDay) ? [[1, randDemand, demand, dailyStock, dailyWaste, dailySalesLost, dailyWasteAcumulator, dailySalesLostAcumulator,
+        randPoliceOcurrance, randPolice, isCaught ? 'SI' : 'NO', dailyUtility, dailyUtilityAcumulator, dailyUtilityWithPermission, dailyUtilityWithPermissionAcumulator]] : []
+    let lastRow = rows.length > 0 ? rows : [];
 
     for (let i = 2; i <= simulationDays; i++) {
 
@@ -80,8 +81,13 @@ export function getSimulation({initPrice, initCost, initPenalty, initStock, simu
         duAvg = Number(toFixed(dailyUtilityAcumulator / i, 4))
         dupAvg = Number(toFixed(dailyUtilityWithPermissionAcumulator / i, 4))
 
-        rows.push([i, randDemand, demand, dailyStock, dailyWaste, dailySalesLost, dwAvg, dslAvg,
-            randPoliceOcurrance, randPolice, isCaught ? 'SI' : 'NO', dailyUtility, duAvg, dailyUtilityWithPermission, dupAvg])
+        lastRow = [i, randDemand, demand, dailyStock, dailyWaste, dailySalesLost, dwAvg, dslAvg,
+            randPoliceOcurrance, randPolice, isCaught ? 'SI' : 'NO', dailyUtility, duAvg, dailyUtilityWithPermission, dupAvg]
+
+        if (i >= fromDay && i <= toDay) {
+            rows.push([...lastRow])
+        }
+
     }
-    return rows;
+    return {_rows: rows, _lastRow: [lastRow]};
 }

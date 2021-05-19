@@ -7,7 +7,7 @@ import Results from "./components/Result";
 import Chart from "./components/Chart";
 
 export default function App() {
-    const {rows, results, simulate} = useSimulation();
+    const {rows, results, lastRow, simulate} = useSimulation();
     const [reset, setReset] = useState(false);
 
     const handleClickSimulate = (data) => {
@@ -67,7 +67,7 @@ export default function App() {
                     <Box my={3} mx={"auto"}>
                         <Simulation
                             title={"Ultima fila"}
-                            rows={rows.slice(-1)}
+                            rows={lastRow}
                         />
                     </Box> <Box my={3} mx={"auto"}>
                     <Simulation

@@ -36,18 +36,18 @@ const Simulation = ({rows, title, pagination, reset}) => {
 
     return (
         <Paper>
+            {
+                title &&
+                <Typography variant="h6" id="tableTitle" align={"center"}>
+                    {title}
+                </Typography>
+            }
             <TableContainer className={classes.table}>
                 <Table
                     stickyHeader
                     size={"small"}
                 >
                     <TableHead>
-                        {
-                            title &&
-                            <Typography variant="h6" id="tableTitle" align={"right"}>
-                                {title}
-                            </Typography>
-                        }
                         <TableRow>
                             {header.map((c, index) =>
                                 <TableCell key={index}>
@@ -56,7 +56,7 @@ const Simulation = ({rows, title, pagination, reset}) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => (
+                        {rows && rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => (
                             <TableRow key={index}>
                                 {row.map((c, index) => (
                                     <TableCell
@@ -84,6 +84,6 @@ const Simulation = ({rows, title, pagination, reset}) => {
             }
         </Paper>
     );
-};
+}
 
 export default Simulation;

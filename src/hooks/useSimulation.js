@@ -4,15 +4,20 @@ import {getSimulation} from "../utils/events";
 const useSimulation = () => {
     const [rows, setRows] = useState([]);
     const [results, setResults] = useState([]);
+    const [lastRow, setLastRow] = useState([]);
 
-    const simulate = ({unitPrice, unitCost, penaltyAmount, dailyStock, simulationDays}) => {
-        setRows(getSimulation({
+    const simulate = ({unitPrice, unitCost, penaltyAmount, dailyStock, simulationDays, fromDay, toDay}) => {
+        const {_rows, _lastRow} = getSimulation({
             initPrice: unitPrice,
             initCost: unitCost,
             initPenalty: penaltyAmount,
             initStock: dailyStock,
-            simulationDays
-        }));
+            simulationDays,
+            fromDay,
+            toDay
+        })
+        setRows(_rows);
+        setLastRow(_lastRow)
     }
 
     useEffect(() => {
@@ -41,6 +46,7 @@ const useSimulation = () => {
     return {
         rows,
         results,
+        lastRow,
         simulate
     }
 };

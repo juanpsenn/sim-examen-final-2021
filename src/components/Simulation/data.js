@@ -21,5 +21,7 @@ export const initialState = {
     unitCost: 10,
     penaltyAmount: 300,
     dailyStock: 50,
-    simulationDays: 100
+    simulationDays: 100,
+    fromDay: 1,
+    toDay: 100
 };
